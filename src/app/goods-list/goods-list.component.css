@@ -5,3 +5,9 @@
 .shoppingBasket{
   font-size: 5em;
 }
+.OrderQuantity{
+  color: red;
+  font-size: 3em;
+  margin-left: -1.22em;
+  padding-bottom: 1em;
+}

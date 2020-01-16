@@ -1,7 +1,13 @@
-<div class="row">
-  <span class="">{{good.name}}</span>
-  <span class="">{{good.label}}</span>
-  <span class="">Price: {{good.price}}</span>
-  <span class="" (click)="shoppingCart.add(good)"><fa-icon class="" [icon]="faPlus"></fa-icon></span>
-  <span class="" (click)="shoppingCart.remove(good.id)" *ngIf="shoppingCart.isInCart(good.id)"><fa-icon class="" [icon]="faMinus"></fa-icon></span>
+<div class="container m-2 p-2 border rounded shadow">
+  <div class="row">
+  <span class="col-12">{{good.name}}</span>
+  <span class="col-12">{{good.label}}</span>
+  </div>
+  <div class="row text-center">
+  <span class="col-12">Price: {{good.price}}</span>
+  </div>
+  <div class="row text-center">
+  <span class="col-6" (click)="shoppingCart.add(good)"><fa-icon class="faPlus" [icon]="faPlus"></fa-icon></span>
+  <span class="col-6" (click)="shoppingCart.remove(good.id)" *ngIf="shoppingCart.isInCart(good.id)"><fa-icon class="faMinus" [icon]="faMinus"></fa-icon></span>
+  </div>
 </div>
