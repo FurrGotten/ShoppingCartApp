@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
-import { GoodItem } from './goods.service';
+import {GoodItem} from './goods.service';
 
-interface CartItem {
+export interface CartItem {
   good: GoodItem;
   quantity: number;
 }
@@ -14,28 +14,37 @@ export class ShoppingCartService {
 
   cart: CartItem[] = [];
 
-  constructor() { }
+  constructor() {
+  }
 
-  private findGoodIndex(goodId: number): number{
+  getCart(): CartItem[] {
+    return this.cart;
+  }
+
+  private findGoodIndex(goodId: number): number {
     return this.cart.findIndex(el => el.good.id === goodId);
   }
 
-  add(good: GoodItem){
+  add(good: GoodItem) {
     const goodIdx = this.findGoodIndex(good.id);
-    if (goodIdx === -1){
+    if (goodIdx === -1) {
       this.cart.push({good, quantity: 1});
     } else {
       this.cart[goodIdx].quantity++;
     }
   }
 
-  remove(goodId: number) {
+  remove(goodId: number, keepLastItem?: boolean) {
     const goodIdx = this.findGoodIndex(goodId);
     if (goodIdx !== -1) {
       if (this.cart[goodIdx].quantity > 1) {
         this.cart[goodIdx].quantity--;
       } else {
-        this.cart.splice(goodIdx, 1);
+        if (keepLastItem) {
+          this.cart[goodIdx].quantity = 0;
+        } else {
+          this.cart.splice(goodIdx, 1);
+        }
       }
     }
   }
@@ -45,11 +54,11 @@ export class ShoppingCartService {
     return goodIdx !== -1;
   }
 
-  empty(){
+  empty() {
     this.cart = [];
   }
 
-  orderSum(): number {
+  getOrderSum(): number {
     let sum = 0;
     for (const cartItem of this.cart) {
       sum += cartItem.quantity * cartItem.good.price;
@@ -57,5 +66,12 @@ export class ShoppingCartService {
     return sum;
   }
 
+  getOrderQuantity(): number {
+    let sum = 0;
+    for (const cartItem of this.cart) {
+      sum += cartItem.quantity;
+    }
+    return sum;
+  }
 
 }

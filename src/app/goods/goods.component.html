@@ -1,11 +1,17 @@
 <div class="container body">
   <div class="row">
     <div class="col-md-10 col-sm-6 mt-5"><h1 class="">Products list</h1></div>
-    <div class="col-md-2 col-sm-6 text-center"><a href="/shopping-cart"><fa-icon class="shoppingBasket" [icon]="faShoppingBasket"></fa-icon></a></div>
+    <div class="col-md-2 col-sm-6 text-center"><a routerLink="/shopping-cart"><fa-icon class="shoppingBasket" [icon]="faShoppingBasket"></fa-icon><span class="">{{shoppingCart.getOrderQuantity()}}</span></a></div>
   </div>
   <div class="row">
     <div class="col-12 container" *ngFor="let good of goods">
-      <span class="">{{good.name}}</span>
+      <div class="row">
+        <span class="">{{good.name}}</span>
+        <span class="">{{good.label}}</span>
+        <span class="">Price: {{good.price}}</span>
+        <span class="" (click)="shoppingCart.add(good)"><fa-icon class="" [icon]="faPlus"></fa-icon></span>
+        <span class="" (click)="shoppingCart.remove(good.id)" *ngIf="shoppingCart.isInCart(good.id)"><fa-icon class="" [icon]="faMinus"></fa-icon></span>
+      </div>
     </div>
   </div>
 </div>

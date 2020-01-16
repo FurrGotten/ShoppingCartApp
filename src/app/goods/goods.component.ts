@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingBasket, faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 
 import { GoodsService, GoodItem } from '../goods.service';
+import { ShoppingCartService } from '../shopping-cart.service';
 
 @Component({
   selector: 'app-goods',
@@ -11,10 +12,12 @@ import { GoodsService, GoodItem } from '../goods.service';
 export class GoodsComponent implements OnInit {
 
   faShoppingBasket = faShoppingBasket;
+  faPlus = faPlus;
+  faMinus = faMinus;
 
-  goods = this.goodsModel.getList();
+  goods: GoodItem[] = this.goodsModel.getList();
 
-  constructor(private goodsModel: GoodsService) {
+  constructor(private goodsModel: GoodsService, private shoppingCart: ShoppingCartService) {
 
   }
 

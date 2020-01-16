@@ -1,9 +1,21 @@
 <div class="container body">
   <div class="row">
     <div class="col-md-10 col-sm-6 mt-5"><h1 class="">Shopping cart list</h1></div>
-    <div class="col-md-2 col-sm-6 text-center mt-3"><a class="backToMenu" href="/">To main menu</a></div>
+    <div class="col-md-2 col-sm-6 text-center mt-3"><a class="backToMenu" routerLink="/">To main menu</a></div>
   </div>
-  <div class="row">
-    <div class="col-12 container"></div>
+  <div class="row container">
+    <div class="col-12 container" *ngFor="let cartItem of cartItems">
+      <div class="row">
+        <span class="col-2">{{cartItem.good.name}}</span>
+        <span class="col-2">{{cartItem.good.price}}</span>
+        <span class="col-2" (click)="shoppingCart.add(cartItem.good)">+</span>
+        <span class="col-2">{{cartItem.quantity}}</span>
+        <span class="col-2" (click)="shoppingCart.remove(cartItem.good.id, true)">-</span>
+        <span class="col-2">{{cartItem.good.price * cartItem.quantity}}</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">You ordered {{shoppingCart.getOrderQuantity()}} items for: {{shoppingCart.getOrderSum()}}</div>
+    </div>
   </div>
 </div>
