@@ -7,6 +7,8 @@ export interface CartItem {
   quantity: number;
 }
 
+const STORAGE_KEY = 'shoppingCart';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -15,6 +17,7 @@ export class ShoppingCartService {
   cart: CartItem[] = [];
 
   constructor() {
+    this.loadFromStorage();
   }
 
   getCart(): CartItem[] {
@@ -32,6 +35,7 @@ export class ShoppingCartService {
     } else {
       this.cart[goodIdx].quantity++;
     }
+    this.saveToStorage();
   }
 
   remove(goodId: number, keepLastItem?: boolean) {
@@ -47,6 +51,7 @@ export class ShoppingCartService {
         }
       }
     }
+    this.saveToStorage();
   }
 
   isInCart(goodId: number): boolean {
@@ -56,6 +61,7 @@ export class ShoppingCartService {
 
   empty() {
     this.cart = [];
+    this.saveToStorage();
   }
 
   getOrderSum(): number {
@@ -72,6 +78,15 @@ export class ShoppingCartService {
       sum += cartItem.quantity;
     }
     return sum;
+  }
+
+  private saveToStorage() {
+      const cartString = JSON.stringify(this.cart);
+      localStorage.setItem(STORAGE_KEY, cartString);
+  }
+  private loadFromStorage(){
+    const cartString = localStorage.getItem(STORAGE_KEY);
+    this.cart = JSON.parse(cartString) || [];
   }
 
 }
