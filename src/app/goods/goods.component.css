@@ -1,0 +1,7 @@
+:root{
+  font-size: calc(0.5vw + 7px);
+  font-family: Geneva, Arial, Helvetica, sans-serif;
+}
+.shoppingBasket{
+  font-size: 5em;
+}
