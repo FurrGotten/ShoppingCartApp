@@ -4,6 +4,8 @@
     <div class="col-md-2 col-sm-6 text-center"><a href="/shopping-cart"><fa-icon class="shoppingBasket" [icon]="faShoppingBasket"></fa-icon></a></div>
   </div>
   <div class="row">
-    <div class="col-12 container"></div>
+    <div class="col-12 container" *ngFor="let good of goods">
+      <span class="">{{good.name}}</span>
+    </div>
   </div>
 </div>
