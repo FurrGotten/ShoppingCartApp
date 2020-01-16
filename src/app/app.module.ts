@@ -5,13 +5,13 @@ import { NgbPaginationModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { GoodsComponent } from './goods/goods.component';
+import { GoodsListComponent } from './goods-list/goods-list.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    GoodsComponent,
+    GoodsListComponent,
     ShoppingCartComponent
   ],
   imports: [

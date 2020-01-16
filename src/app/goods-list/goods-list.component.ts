@@ -6,10 +6,10 @@ import { ShoppingCartService } from '../shopping-cart.service';
 
 @Component({
   selector: 'app-goods',
-  templateUrl: './goods.component.html',
-  styleUrls: ['./goods.component.css']
+  templateUrl: './goods-list.component.html',
+  styleUrls: ['./goods-list.component.css']
 })
-export class GoodsComponent implements OnInit {
+export class GoodsListComponent implements OnInit {
 
   faShoppingBasket = faShoppingBasket;
   faPlus = faPlus;
@@ -22,7 +22,6 @@ export class GoodsComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.goodsModel.getList());
   }
 
 }
