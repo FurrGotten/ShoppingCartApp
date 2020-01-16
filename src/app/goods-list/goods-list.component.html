@@ -5,13 +5,7 @@
   </div>
   <div class="row">
     <div class="col-12 container" *ngFor="let good of goods">
-      <div class="row">
-        <span class="">{{good.name}}</span>
-        <span class="">{{good.label}}</span>
-        <span class="">Price: {{good.price}}</span>
-        <span class="" (click)="shoppingCart.add(good)"><fa-icon class="" [icon]="faPlus"></fa-icon></span>
-        <span class="" (click)="shoppingCart.remove(good.id)" *ngIf="shoppingCart.isInCart(good.id)"><fa-icon class="" [icon]="faMinus"></fa-icon></span>
-      </div>
+      <app-goods-item [good]="good"></app-goods-item>
     </div>
   </div>
 </div>

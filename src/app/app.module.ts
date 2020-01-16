@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { GoodsListComponent } from './goods-list/goods-list.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { GoodsItemComponent } from './goods-item/goods-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GoodsListComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    GoodsItemComponent
   ],
   imports: [
     BrowserModule,
