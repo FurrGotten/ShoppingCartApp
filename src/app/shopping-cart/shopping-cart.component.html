@@ -1,21 +1,25 @@
-<div class="container body">
-  <div class="row">
-    <div class="col-md-10 col-sm-6 mt-5"><h1 class="">Shopping cart list</h1></div>
-    <div class="col-md-2 col-sm-6 text-center mt-3"><a class="backToMenu" routerLink="/">To main menu</a></div>
+<div class="container-fluid border-bottom pb-4 bg-primary text-white shadow">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9 col-sm-6 mt-5"><h1 class="">Shopping cart list</h1></div>
+      <div class="col-md-3 col-sm-6 text-center mt-5"><a class="backToMenu text-white" routerLink="/">To main menu</a></div>
+    </div>
   </div>
+</div>
+<div class="container mt-3">
   <div class="row container">
-    <div class="col-12 container" *ngFor="let cartItem of cartItems">
+    <div class="col-12 container border m-1 pt-2 pb-2 text-center shadow" *ngFor="let cartItem of cartItems">
       <div class="row">
-        <span class="col-2">{{cartItem.good.name}}</span>
-        <span class="col-2">{{cartItem.good.price}}</span>
-        <span class="col-2" (click)="shoppingCart.add(cartItem.good)">+</span>
-        <span class="col-2">{{cartItem.quantity}}</span>
-        <span class="col-2" (click)="shoppingCart.remove(cartItem.good.id, true)">-</span>
-        <span class="col-2">{{cartItem.good.price * cartItem.quantity}}</span>
+        <span class="col-md-2 col-sm-12 mt-2 mb-2 border-right">{{cartItem.good.name}}</span>
+        <span class="col-2 border-right mt-2 mb-2">{{cartItem.good.price}}</span>
+        <span class="col-2 border-right mt-2 mb-2" (click)="shoppingCart.add(cartItem.good)">+</span>
+        <span class="col-md-2 col-sm-4 border-right mt-2 mb-2">{{cartItem.quantity}}</span>
+        <span class="col-2 border-right mt-2 mb-2" (click)="shoppingCart.remove(cartItem.good.id, true)">-</span>
+        <span class="col-2 mt-2 mb-2">{{cartItem.good.price * cartItem.quantity}}</span>
       </div>
     </div>
-    <div class="row">
-      <div class="col-6">You ordered {{shoppingCart.getOrderQuantity()}} items for: {{shoppingCart.getOrderSum()}}</div>
-    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 text-center mt-5 mb-5"><h5 class="">You ordered {{shoppingCart.getOrderQuantity()}} items for: {{shoppingCart.getOrderSum()}}</h5></div>
   </div>
 </div>

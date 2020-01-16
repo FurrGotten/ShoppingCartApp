@@ -1,0 +1,10 @@
+:root{
+  font-size: calc(0.5vw + 7px);
+  font-family: Geneva, Arial, Helvetica, sans-serif;
+}
+.faPlus{
+  font-size: 2em;
+}
+.faMinus{
+  font-size: 2em;
+}
