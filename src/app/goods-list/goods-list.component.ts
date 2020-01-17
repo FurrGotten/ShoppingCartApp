@@ -21,6 +21,7 @@ export class GoodsListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.shoppingCart.updateEmpty();
   }
 
 }
