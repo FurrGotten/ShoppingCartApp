@@ -2,7 +2,8 @@
   <div class="container">
     <div class="row">
       <div class="col-md-9 col-sm-6 mt-5"><h1 class="">Shopping cart list</h1></div>
-      <div class="col-md-3 col-sm-6 text-center mt-5"><a class="backToMenu text-white" routerLink="/">To main menu</a></div>
+      <div class="col-md-3 col-sm-6 text-center mt-5"><a (click)="shoppingCart.updateEmpty()" class="backToMenu text-white" routerLink="/">To main
+        menu</a></div>
     </div>
   </div>
 </div>
@@ -19,7 +20,9 @@
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-12 text-center mt-5 mb-5"><h5 class="">You ordered {{shoppingCart.getOrderQuantity()}} items for: {{shoppingCart.getOrderSum()}}</h5></div>
+  <div class="row text-center  mt-5 mb-5 align-items-center">
+    <div class="col-6 text-center"><h5 class="">You ordered {{shoppingCart.getOrderQuantity()}} items
+      for: {{shoppingCart.getOrderSum()}}</h5></div>
+    <div class="col-6"><button type="button" (click)="shoppingCart.empty()" class="btn btn-primary">Clear list</button></div>
   </div>
 </div>

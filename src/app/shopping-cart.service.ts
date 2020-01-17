@@ -24,6 +24,12 @@ export class ShoppingCartService {
     return this.cart;
   }
 
+  empty() {
+    length = this.cart.length;
+    this.cart.splice(0, length);
+    this.saveToStorage();
+  }
+
   private findGoodIndex(goodId: number): number {
     return this.cart.findIndex(el => el.good.id === goodId);
   }
@@ -59,11 +65,6 @@ export class ShoppingCartService {
     return goodIdx !== -1;
   }
 
-  empty() {
-    this.cart = [];
-    this.saveToStorage();
-  }
-
   getOrderSum(): number {
     let sum = 0;
     for (const cartItem of this.cart) {
@@ -80,11 +81,19 @@ export class ShoppingCartService {
     return sum;
   }
 
+  updateEmpty() {
+    for (let i = 0; i < this.cart.length; i++) {
+      if (this.cart[i].quantity === 0) {
+        this.cart.splice(i, 1);
+      }
+    }
+  }
+
   private saveToStorage() {
       const cartString = JSON.stringify(this.cart);
       localStorage.setItem(STORAGE_KEY, cartString);
   }
-  private loadFromStorage(){
+  private loadFromStorage() {
     const cartString = localStorage.getItem(STORAGE_KEY);
     this.cart = JSON.parse(cartString) || [];
   }
