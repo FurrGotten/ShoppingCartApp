@@ -82,11 +82,8 @@ export class ShoppingCartService {
   }
 
   updateEmpty() {
-    for (let i = 0; i < this.cart.length; i++) {
-      if (this.cart[i].quantity === 0) {
-        this.cart.splice(i, 1);
-      }
-    }
+    this.cart = this.cart.filter(cartItem => cartItem.quantity > 0);
+    this.saveToStorage();
   }
 
   private saveToStorage() {
